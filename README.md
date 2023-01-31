@@ -1,6 +1,6 @@
 # Project 1: Shared shopping list
 
-Simple but useful website to make shopping lists.
+Simple but useful website, where you can easily create shopping lists and manage them.
 
 ## Local launch
 
@@ -9,4 +9,4 @@ Simple but useful website to make shopping lists.
 
 ## Website
 
-The website have been deployed to Fly.io, you can find it here:
+The website has been deployed to Fly.io, you can find it here: https://shared-shopping-lists-best.fly.dev
