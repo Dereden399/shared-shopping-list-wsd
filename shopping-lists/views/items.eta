@@ -1,0 +1,35 @@
+<% layout("./layouts/layout.eta") %>
+
+<h2><%= it.list.name%></h2>
+<article>
+  <form method="POST" action="/lists/<%= it.list.id%>/items">
+    <h3>Add item to list</h3>
+    <label for="name">Item's name</label>
+    <input name="name" id="name" type="text" placeholder="Type something here..." required/>
+    
+    <input type="submit" id="submit-button" value="Create!"/>
+  </form>
+</article>
+<% if (it.items.length != 0) {%>
+  <h3>Items</h3>
+  <%it.items.map(item => {%>
+    <li class="item-element">
+      <% if (!item.collected) {%>
+        <hgroup>
+          <h4><%= item.name%></h4>
+          <form method="POST" action="/lists/<%= it.list.id%>/items/<%=item.id%>/collect">
+            <input id="collect-button" type="submit" value="Mark collected!" class="outline" style="width:auto;"/>
+          </form>
+        </hgroup>
+      <%} else {%>
+        <del><h4><%= item.name%></h4></del>
+      <%}%>
+    </li>
+  <%})%>
+<%} else {%>
+  <hgroup>
+    <h2>No items in this list yet</h2>
+    <h3>You can add more using the form above</h3>
+  </hgroup>
+<%}%>
+  

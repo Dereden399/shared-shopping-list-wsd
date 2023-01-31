@@ -1,0 +1,17 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Statistics</h1>
+
+<% if(it.listsCount) {%>
+  <ul>
+    <li>
+      Shopping lists: <%= it.listsCount%>
+    </li>
+    <li>
+      Items in lists: <%= it.itemsCount%>
+    </li>
+  </ul>
+<%} else {%>
+  <h3>No shopping lists yet</h3>
+  <p>You can make new in the <em data-tooltip="Check the 'Lists' tab in the navigation bar">"Lists"</em> section</p>
+<%}%>

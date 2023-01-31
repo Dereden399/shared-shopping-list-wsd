@@ -1,0 +1,34 @@
+<% layout("./layouts/layout.eta")%>
+
+<h1>Shopping lists</h1>
+<article>
+  <form method="POST" action="/lists">
+    <h3>Create new shopping list</h3>
+    <label for="name">List's name</label>
+    <input name="name" id="name" type="text" placeholder="Type something here..." required/>
+
+    <input type="submit" id="submit-button" value="Create!"/>
+  </form>
+</article>
+<%if (it.activeLists.length != 0) {%>
+  <h2>Active lists</h2>
+  <ul>
+    <%it.activeLists.map(list => {%>
+      <li class="lists-element">
+        <hgroup>
+          <h4>
+            <a href="lists/<%= list.id%>"><%= list.name%></a>
+          </h4>
+          <form method="POST" action="/lists/<%= list.id%>/deactivate">
+            <input id="deactivate-button" type="submit" value="Deactivate list!" class="secondary outline" style="width:auto;"/>
+          </form>
+        </hgroup>
+      </li>
+    <%})%>
+  </ul>
+<%} else {%>
+  <hgroup>
+    <h2>You have no active lists yet</h2>
+    <h3>You can create new using the form above</h3>
+  </hgroup>
+<%}%>
